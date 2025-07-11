@@ -1,39 +1,32 @@
 #include <stdio.h>
 #include "FrameWork.h"
-int main(int argc, char* args[]) {
+int main() {
     const int SCREEN_WIDTH = 800;
     const int SCREEN_HEIGHT = 600;
 
+    float x = 100.0f;
+    float y = 100.0f;
+    float velX = 10.0f;
+    float velY = 10.0f;
 
-    int x = 100;
-    int y = 100;
-
-    WindowInit(100, 50, SCREEN_WIDTH, SCREEN_HEIGHT, "Title Test");
-    RendererInit();
+    WindowInit(100, 50, SCREEN_WIDTH, SCREEN_HEIGHT, "Title Test");//initialize the window
+    RendererInit();//initialize the renderer
 
     bool running = true;
 
-    while (running) {
+    while (running) {//gane loop
         while (CheckEvent(&running)) {
+            //handle events like quitting
         }
-            if (KeyDown(KEY_W)) {
-                y -= 10.0f;
-            }
-            if (KeyDown(KEY_S)) {
-                y += 10.0f;
-            }
-            if (KeyDown(KEY_A)) {
-                x -= 10.0f;
-            }
-            if (KeyDown(KEY_D)) {
-                x += 10.0f;
-            }
+        if (KeyDown(KEY_A)) {//check for input
+            y += velY;
+        }
 
-        ClearWindow(BLACK);
-        DrawRect(x, y, 50, 50, RED);
-        DrawScreen();
+        ClearWindow(BLACK);//clear the screen and set it to black
+        DrawCircle(x, y, 50, RED);//draw a circle
+        DrawScreen();//draw everything on the screen
         SDL_Delay(16);
     }
-    QuitProgram();
+    QuitProgram();//end the program
     return 0;
 }

@@ -2,7 +2,9 @@
 #ifndef FRAMEWORK_H
 #define FRAMEWORK_H
 #include<SDL.h>
+#undef main
 #include<stdio.h>
+
 
 #include "Keys.h"
 #include "Colors.h"
@@ -36,14 +38,7 @@ void ClearWindow(color Color) {
     SDL_RenderClear(renderer);//clear the screen
 }
 
-bool KeyiDown(SDL_Keycode KEY) {//check for input
-    if (event.type == SDL_KEYDOWN) {
-        if (event.key.keysym.sym == KEY) {
-            return true;
-        }
-    }
-    return false;
-}
+//TODO: add a SetFPS function
 
 bool KeyDown(KEYS key) {//check for input
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
@@ -64,6 +59,29 @@ void DrawRect(int x, int y, int width, int height, color rectColor) {//draw rect
     SDL_Rect rect = {x, y, width, height};//create the rectangle based on the function arguments
     SDL_SetRenderDrawColor(renderer, rectColor.r, rectColor.g, rectColor.b, rectColor.a);//set the colors
     SDL_RenderFillRect(renderer, &rect);//fill the rectangle
+}
+
+void DrawCircle(int cx, int cy, int radius, color color) {
+    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+    int x = radius;
+    int y = 0;
+    int err = 0;
+
+    while (x >= y) {
+        // Draw horizontal lines between symmetric points
+        SDL_RenderDrawLine(renderer, cx - x, cy + y, cx + x, cy + y);
+        SDL_RenderDrawLine(renderer, cx - y, cy + x, cx + y, cy + x);
+        SDL_RenderDrawLine(renderer, cx - x, cy - y, cx + x, cy - y);
+        SDL_RenderDrawLine(renderer, cx - y, cy - x, cx + y, cy - x);
+
+        y++;
+        if (err <= 0) {
+            err += 2 * y + 1;
+        } else {
+            x--;
+            err += 2 * (y - x + 1);
+        }
+    }
 }
 
 void DrawPixel(int x, int y, color rectColor) {//draw rectangle function
