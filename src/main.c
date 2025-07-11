@@ -14,7 +14,7 @@ int main() {
 
     bool running = true;
 
-    while (running) {//gane loop
+    while (running) {//game loop
         while (CheckEvent(&running)) {
             //handle events like quitting
         }
@@ -22,7 +22,7 @@ int main() {
             y += velY;
         }
 
-        ClearWindow(BLACK);//clear the screen and set it to black
+        ClearWindow(CYAN);//clear the screen and set it to black
         DrawCircle(x, y, 50, RED);//draw a circle
         DrawScreen();//draw everything on the screen
         SDL_Delay(16);
