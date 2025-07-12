@@ -107,7 +107,7 @@ int main() {
         DrawRect(p1.x, p1.y, p1.width, p1.height, WHITE);//draw player 1
         DrawRect(p2.x, p2.y, p2.width, p2.height, WHITE);//draw player 2
         DrawScreen();//draw everything on the screen
-        SetFPS(60);//set the fps to 60
+        SetFPS(50);//set the fps to 50
     }
     EndProgram();//end the program
     return 0;
