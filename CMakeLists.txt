@@ -7,6 +7,7 @@ add_executable(GameFramework
         src/main.c
 )
 
+#include files
 target_include_directories(GameFramework PRIVATE
         "C:/CLibrarys/SDL/SDL2/x86_64-w64-mingw32/include/SDL2"
         "C:/CLibrarys/SDL/SDL2_image/x86_64-w64-mingw32/include/SDL2"
@@ -15,6 +16,8 @@ target_include_directories(GameFramework PRIVATE
         "include"
         "${SOURCE_DIR}"
 )
+
+#linker files
 target_link_directories(GameFramework PRIVATE
         "C:/CLibrarys/SDL/SDL2/x86_64-w64-mingw32/lib"
         "C:/CLibrarys/SDL/SDL2_Image/x86_64-w64-mingw32/lib"

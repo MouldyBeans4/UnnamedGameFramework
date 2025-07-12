@@ -57,7 +57,7 @@ void SetFPS(float FPS) {
 
 float DeltaTime() {
     static Uint32 lastTime = 0;
-    Uint32 currentTime = SDL_GetTicks();//ms since window init
+    Uint32 currentTime = SDL_GetTicks();//MS since window init
 
     if (lastTime == 0) {
         lastTime = currentTime;
