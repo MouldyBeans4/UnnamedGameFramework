@@ -47,5 +47,4 @@ typedef enum KEYS {//creating the variables for the keys
     KEY_DOWN = 81,
     KEY_UP = 82
 } KEYS;
-
-#endif //KEYS_H
+#endif

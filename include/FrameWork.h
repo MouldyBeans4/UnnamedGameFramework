@@ -2,6 +2,7 @@
 #ifndef FRAMEWORK_H
 #define FRAMEWORK_H
 #include<SDL.h>
+#include<SDL_ttf.h>
 #undef main
 #include<stdio.h>
 
@@ -17,7 +18,14 @@ SDL_Renderer* renderer;//defining the renderer variable
 
 
 
-void WindowInit(int x, int y, int WindowWidth, int WindowHeight, const char *Title) {//window initilazation
+
+
+
+
+void WindowInit(int x, int y, int WindowWidth, int WindowHeight, const char *Title) {//window initialization
+    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+        printf("Video Initialization Error: %s\n", SDL_GetError());
+    }
     SDL_Init(SDL_INIT_VIDEO);//initialize video
     window = SDL_CreateWindow(Title, x, y, WindowWidth, WindowHeight, SDL_WINDOW_SHOWN);//create the window
 
@@ -41,6 +49,12 @@ void ClearWindow(color Color) {
 }
 
 //TODO: add a SetFPS function
+
+void SetFPS(float FPS) {
+    float MS = 1000 / FPS;
+    SDL_Delay(MS);
+}
+
 float DeltaTime() {
     static Uint32 lastTime = 0;
     Uint32 currentTime = SDL_GetTicks();//ms since window init
@@ -106,13 +120,18 @@ void DrawPixel(int x, int y, color rectColor) {//draw rectangle function
     SDL_RenderFillRect(renderer, &rect);//fill the pixel
 }
 
+void DestroyText() {
+
+}
+
 void DrawScreen() {
     SDL_RenderPresent(renderer);
 }
 
-void QuitProgram() {//call this to end the program at the bottom of file
+void EndProgram() {//call this to end the program at the bottom of file
     if (window) SDL_DestroyWindow(window);//destroy the window
     if (renderer) SDL_DestroyRenderer(renderer);//destroy the renderer
+    if (TTF_Init)TTF_Quit();
     SDL_Quit();//quit the program
 }
 
