@@ -104,8 +104,8 @@ int main() {
 
         ClearWindow(BLACK);//clear the screen and set it to black
         DrawRect(ball.x, ball.y, ball.width, ball.height, WHITE);//draw a circle
-        DrawRect(p1.x, p1.y, p1.width, p1.height, WHITE);//draw player 1
-        DrawRect(p2.x, p2.y, p2.width, p2.height, WHITE);//draw player 2
+        DrawRect(p1.x, p1.y, p1.width, p1.height, WHITE);//draw the player 1
+        DrawRect(p2.x, p2.y, p2.width, p2.height, WHITE);//draw the player 2
         DrawScreen();//draw everything on the screen
         SetFPS(50);//set the fps to 50
     }
