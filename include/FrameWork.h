@@ -15,6 +15,8 @@ SDL_Event event;//set event variable
 SDL_Window* window;//defining the window variable
 SDL_Renderer* renderer;//defining the renderer variable
 
+
+
 void WindowInit(int x, int y, int WindowWidth, int WindowHeight, const char *Title) {//window initilazation
     SDL_Init(SDL_INIT_VIDEO);//initialize video
     window = SDL_CreateWindow(Title, x, y, WindowWidth, WindowHeight, SDL_WINDOW_SHOWN);//create the window
@@ -39,6 +41,20 @@ void ClearWindow(color Color) {
 }
 
 //TODO: add a SetFPS function
+float DeltaTime() {
+    static Uint32 lastTime = 0;
+    Uint32 currentTime = SDL_GetTicks();//ms since window init
+
+    if (lastTime == 0) {
+        lastTime = currentTime;
+        return 0.016f; //return 60 FPS for first frame
+    }
+
+    Uint32 deltaMs = currentTime - lastTime;
+    lastTime = currentTime;
+
+    return deltaMs / 1000.0f;//convert ms to seconds
+}
 
 bool KeyDown(KEYS key) {//check for input
     const Uint8* keystates = SDL_GetKeyboardState(NULL);

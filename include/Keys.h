@@ -41,7 +41,11 @@ typedef enum KEYS {//creating the variables for the keys
     KEY_ESCAPE = 41,
     KEY_BACKSPACE = 42,
     KEY_TAB = 43,
-    KEY_SPACE = 44
+    KEY_SPACE = 44,
+    KEY_RIGHT = 79,
+    KEY_LEFT = 80,
+    KEY_DOWN = 81,
+    KEY_UP = 82
 } KEYS;
 
 #endif //KEYS_H
